@@ -1,0 +1,230 @@
+.contact-section{
+    min-height:100vh;
+    background:#23153c;
+    color:white;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:60px 20px;
+    animation:fadePage 1.2s ease;
+}
+
+/* title */
+
+.contact-section h1{
+    font-size:40px;
+    margin-bottom:40px;
+    letter-spacing:2px;
+    animation:slideDown 1s ease;
+}
+
+/* form */
+
+.contact-section form{
+    width:350px;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    background:rgba(255,255,255,0.05);
+    padding:30px;
+    border-radius:12px;
+    backdrop-filter:blur(10px);
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    animation:fadeUp 1.2s ease;
+}
+
+/* inputs */
+
+.contact-section input,
+.contact-section textarea{
+    padding:12px 15px;
+    border:none;
+    outline:none;
+    border-radius:8px;
+    font-size:14px;
+    background:#1a1030;
+    color:white;
+    transition:0.3s;
+}
+
+/* focus animation */
+
+.contact-section input:focus,
+.contact-section textarea:focus{
+    box-shadow:0 0 10px #7c6cff;
+    transform:scale(1.02);
+}
+
+/* textarea */
+
+.contact-section textarea{
+    resize:none;
+    height:120px;
+}
+
+/* send button */
+
+.contact-section button{
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    background:linear-gradient(45deg,#7c6cff,#9d4edd);
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+    position:relative;
+    overflow:hidden;
+}
+
+/* button hover */
+
+.contact-section button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 20px rgba(0,0,0,0.5);
+}
+
+/* button glow animation */
+
+.contact-section button::after{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:linear-gradient(120deg,transparent,rgba(255,255,255,0.4),transparent);
+    top:0;
+    left:-100%;
+    transition:0.5s;
+}
+
+.contact-section button:hover::after{
+    left:100%;
+}
+
+/* social links */
+
+.contact-links{
+    margin-top:40px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+    justify-content:center;
+    animation:fadeUp 1.6s ease;
+}
+
+/* link style */
+
+.contact-links a{
+    text-decoration:none;
+    color:white;
+    padding:10px 18px;
+    border-radius:8px;
+    background:#1a1030;
+    transition:0.3s;
+    font-size:16px;
+    position:relative;
+}
+
+/* hover animation */
+
+.contact-links a:hover{
+    background:#7c6cff;
+    transform:translateY(-4px) scale(1.05);
+    box-shadow:0 10px 20px rgba(0,0,0,0.4);
+}
+/* success popup background */
+
+.success-popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+display:flex;
+align-items:center;
+justify-content:center;
+animation:fadeIn 0.4s ease;
+z-index:1000;
+}
+
+/* message box */
+
+.success-box{
+background:#1a1030;
+color:white;
+padding:40px 50px;
+border-radius:12px;
+text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,0.5);
+animation:popup 0.4s ease;
+}
+
+.success-box h2{
+color:#7c6cff;
+margin-bottom:10px;
+}
+
+.success-box p{
+font-size:16px;
+line-height:1.5;
+}
+
+/* animations */
+
+@keyframes fadeIn{
+from{
+opacity:0;
+}
+to{
+opacity:1;
+}
+}
+
+@keyframes popup{
+from{
+transform:scale(0.7);
+opacity:0;
+}
+to{
+transform:scale(1);
+opacity:1;
+}
+}
+/* page fade animation */
+
+@keyframes fadePage{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
+
+/* title animation */
+
+@keyframes slideDown{
+    from{
+        opacity:0;
+        transform:translateY(-40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* form animation */
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}

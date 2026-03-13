@@ -1,0 +1,9 @@
+.section-bg{
+  background: linear-gradient(135deg, #0f172a, #020617);
+  color: white;
+  padding: 100px 10%;
+  min-height: 100vh;
+}
+html {
+  scroll-behavior: smooth;
+}

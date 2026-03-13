@@ -1,0 +1,41 @@
+.about-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+    gap: 40px;
+}
+*{
+
+    color: white;
+}
+.photo img{
+    height: 300px;
+    object-fit: cover;
+    border: 3px solid #444;
+}
+
+.content{
+    text-align: left;
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+.content h3{
+    font-weight: normal;
+}
+.about-section{
+    background-color: #23153c;
+}
+/* animation starting state */
+
+.hidden{
+  opacity:0;
+  transform:translateY(100px);
+  transition:all 2s ease-in-out;
+}
+
+.show{
+  opacity:1;
+  transform:translateY(0);
+}
