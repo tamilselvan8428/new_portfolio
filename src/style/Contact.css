@@ -16,13 +16,15 @@
     font-size:40px;
     margin-bottom:40px;
     letter-spacing:2px;
+    text-align:center;
     animation:slideDown 1s ease;
 }
 
 /* form */
 
 .contact-section form{
-    width:350px;
+    width:100%;
+    max-width:350px;
     display:flex;
     flex-direction:column;
     gap:18px;
@@ -46,6 +48,7 @@
     background:#1a1030;
     color:white;
     transition:0.3s;
+    width:100%;
 }
 
 /* focus animation */
@@ -85,7 +88,7 @@
     box-shadow:0 10px 20px rgba(0,0,0,0.5);
 }
 
-/* button glow animation */
+/* button glow */
 
 .contact-section button::after{
     content:"";
@@ -123,17 +126,15 @@
     background:#1a1030;
     transition:0.3s;
     font-size:16px;
-    position:relative;
 }
-
-/* hover animation */
 
 .contact-links a:hover{
     background:#7c6cff;
     transform:translateY(-4px) scale(1.05);
     box-shadow:0 10px 20px rgba(0,0,0,0.4);
 }
-/* success popup background */
+
+/* success popup */
 
 .success-popup{
 position:fixed;
@@ -148,8 +149,6 @@ justify-content:center;
 animation:fadeIn 0.4s ease;
 z-index:1000;
 }
-
-/* message box */
 
 .success-box{
 background:#1a1030;
@@ -171,15 +170,62 @@ font-size:16px;
 line-height:1.5;
 }
 
+/* ================= */
+/* TABLET RESPONSIVE */
+/* ================= */
+
+@media (max-width:900px){
+
+.contact-section h1{
+    font-size:34px;
+}
+
+.contact-section form{
+    max-width:320px;
+}
+
+}
+
+/* ================= */
+/* MOBILE RESPONSIVE */
+/* ================= */
+
+@media (max-width:600px){
+
+.contact-section{
+    padding:40px 15px;
+}
+
+.contact-section h1{
+    font-size:28px;
+}
+
+.contact-section form{
+    max-width:100%;
+    padding:25px;
+}
+
+.contact-links{
+    gap:10px;
+}
+
+.contact-links a{
+    font-size:14px;
+    padding:8px 14px;
+}
+
+.success-box{
+    width:85%;
+    padding:30px;
+}
+
+}
+
 /* animations */
 
 @keyframes fadeIn{
-from{
-opacity:0;
-}
-to{
-opacity:1;
-}
+from{opacity:0;}
+to{opacity:1;}
 }
 
 @keyframes popup{
@@ -192,39 +238,30 @@ transform:scale(1);
 opacity:1;
 }
 }
-/* page fade animation */
 
 @keyframes fadePage{
-    from{
-        opacity:0;
-    }
-    to{
-        opacity:1;
-    }
+from{opacity:0;}
+to{opacity:1;}
 }
-
-/* title animation */
 
 @keyframes slideDown{
-    from{
-        opacity:0;
-        transform:translateY(-40px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+from{
+opacity:0;
+transform:translateY(-40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 
-/* form animation */
-
 @keyframes fadeUp{
-    from{
-        opacity:0;
-        transform:translateY(40px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
 }

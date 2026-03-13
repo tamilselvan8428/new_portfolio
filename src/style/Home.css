@@ -1,48 +1,61 @@
-.hero{
-height:100vh;
-display:flex;
-justify-content:flex-start;
-align-items:center;
-position:relative;
-color:white;
-font-family:Arial, Helvetica, sans-serif;
-}
 *{
-    margin: 0%;
-    padding: 0%;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
+
+.hero{
+    height:100vh;
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+    position:relative;
+    color:white;
+    font-family:Arial, Helvetica, sans-serif;
+    padding:0 80px;
+}
+
+/* hero content */
+
 .hero-content{
-text-align:left;
-z-index:2;
-padding-left: 50px;
+    text-align:left;
+    z-index:2;
 }
+
+/* name */
 
 .name{
-font-size:70px;
-opacity: 1;
-font-weight:bold;
-position: relative;
-z-index: 3;
+    font-size:70px;
+    font-weight:bold;
+    position:relative;
+    z-index:3;
+    line-height:1.1;
 }
 
-.name span {
-display: inline-block;
-opacity: 1;
-background: linear-gradient(90deg,#00f2ff,#7b2cff);
-background-clip:text;
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+/* gradient name */
+
+.name span{
+    display:inline-block;
+    background:linear-gradient(90deg,#00f2ff,#7b2cff);
+    background-clip:text;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
 }
+
+/* title */
 
 .title{
-font-size:30px;
-font-weight:300;
-letter-spacing:3px;
-opacity:0.9;
+    font-size:30px;
+    font-weight:300;
+    letter-spacing:3px;
+    opacity:0.9;
+    margin-top:10px;
 }
 
+/* cursor animation */
+
 .cursor{
-animation: blink 1s infinite;
+    animation:blink 1s infinite;
 }
 
 @keyframes blink{
@@ -51,18 +64,51 @@ animation: blink 1s infinite;
 100%{opacity:1}
 }
 
-@media (max-width:768px){
+
+/* ================= */
+/* TABLET RESPONSIVE */
+/* ================= */
+
+@media (max-width:900px){
+
+.hero{
+    padding:0 40px;
+}
 
 .name{
-font-size:45px;
+    font-size:55px;
 }
 
 .title{
-font-size:22px;
+    font-size:26px;
+}
+
+}
+
+
+/* ================= */
+/* MOBILE RESPONSIVE */
+/* ================= */
+
+@media (max-width:600px){
+
+.hero{
+    justify-content:center;
+    text-align:center;
+    padding:0 20px;
 }
 
 .hero-content{
-margin-top:80px;
+    text-align:center;
+}
+
+.name{
+    font-size:38px;
+}
+
+.title{
+    font-size:18px;
+    letter-spacing:2px;
 }
 
 }

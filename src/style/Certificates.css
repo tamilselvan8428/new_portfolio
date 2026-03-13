@@ -1,14 +1,18 @@
 .cert-section{
     text-align:center;
-    padding:60px 0;
+    padding:60px 20px;
     overflow:hidden;
-    background-color: #23153c;
+    background-color:#23153c;
 }
+
+/* slider track */
 
 .track{
     position:relative;
     width:100%;
 }
+
+/* timeline line */
 
 .line{
     width:100%;
@@ -18,34 +22,14 @@
     top:120px;
 }
 
+/* slider */
+
 .cert-slider{
     display:flex;
-    animation:scroll 20s linear infinite;
+    gap:40px;
 }
 
-.cert-card{
-    width:300px;
-    height:200px;
-    background:#333;
-    border-radius:10px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.2);
-    position:relative;
-    top:20px;
-    margin-right: 40px;
-    flex-shrink: 0;
-}
-
-.cert-card img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    border-radius:10px;
-}
-.cert-slider{
-    display:flex;
-}
-
-/* start animation when in view */
+/* start animation when visible */
 
 .start-scroll{
     animation:scroll 20s linear infinite;
@@ -57,17 +41,69 @@
     animation-play-state:paused;
 }
 
-@keyframes scroll{
+/* certificate card */
 
-0%{
-transform:translateX(0);
+.cert-card{
+    width:300px;
+    height:200px;
+    background:#333;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    position:relative;
+    top:20px;
+    flex-shrink:0;
 }
 
-100%{
-transform:translateX(calc(-300px * 6 - 40px * 6));
+.cert-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+
+/* ================= */
+/* TABLET RESPONSIVE */
+/* ================= */
+
+@media (max-width:900px){
+
+.cert-card{
+    width:240px;
+    height:160px;
+}
+
+.line{
+    top:100px;
 }
 
 }
+
+
+/* ================= */
+/* MOBILE RESPONSIVE */
+/* ================= */
+
+@media (max-width:600px){
+
+.cert-section{
+    padding:40px 10px;
+}
+
+.cert-card{
+    width:200px;
+    height:140px;
+}
+
+.line{
+    top:90px;
+}
+
+}
+
+
+/* animation */
+
 @keyframes scroll{
 
 0%{
