@@ -30,7 +30,7 @@ const Navbar = () => {
           <li><a href="#projects" onClick={(e)=>{e.preventDefault();handleScroll('projects')}}>Projects</a></li>
 
           <li>
-            <a href="/cv.pdf" download className="cv-btn">
+            <a href="/resume.pdf" download className="cv-btn">
               Download Resume
             </a>
           </li>
