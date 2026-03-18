@@ -28,6 +28,7 @@ const Navbar = () => {
           <li><a href="#skills" onClick={(e)=>{e.preventDefault();handleScroll('skills')}}>Skills</a></li>
           <li><a href="#certificates" onClick={(e)=>{e.preventDefault();handleScroll('certificates')}}>Certificates</a></li>
           <li><a href="#projects" onClick={(e)=>{e.preventDefault();handleScroll('projects')}}>Projects</a></li>
+          <li><a href="#contact" onClick={(e)=>{e.preventDefault();handleScroll('contact')}}>Contact</a></li>
 
           <li>
             <a href="/resume.pdf" download className="cv-btn">
