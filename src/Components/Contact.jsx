@@ -87,25 +87,7 @@ Send Message
 
 {/* Contact Links */}
 
-<div className="contact-links">
 
-<h3>Connect With Me</h3>
-
-<a href="mailto:tamilselvan24650@gmail.com">📧 Send Email</a>
-
-<a href="https://github.com/tamilselvan8428" target="_blank" rel="noreferrer">
-💻 GitHub
-</a>
-
-<a href="https://linkedin.com/in/ts-m" target="_blank" rel="noreferrer">
-🔗 LinkedIn
-</a>
-
-<a href="https://wa.me/918428863860" target="_blank" rel="noreferrer">
-💬 WhatsApp
-</a>
-
-</div>
 
 </div>
 
