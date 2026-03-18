@@ -2,96 +2,114 @@ import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import "../style/Contact.css";
 
+// Initialize EmailJS
+emailjs.init("PVvjgTLofvDoeyXeC");
+
 const Contact = () => {
+  const form = useRef();
+  const [showMessage, setShowMessage] = useState(false);
 
-const form = useRef();
-const [showMessage, setShowMessage] = useState(false);
+  const sendEmail = (e) => {
+    e.preventDefault();
 
-const sendEmail = (e) => {
-e.preventDefault();
+    // Get form data
+    const formData = new FormData(form.current);
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const message = formData.get('message');
 
-emailjs.sendForm(
-"service_cun6ctp",
-"template_v3hxkgp",
-form.current,
-"PVvjgTLofvDoeyXeC"
-)
-.then(() => {
+    // Validate form data
+    if (!name || !email || !message) {
+      alert("Please fill in all fields");
+      return;
+    }
 
-setShowMessage(true);   // show success message
-e.target.reset();
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert("Please enter a valid email address");
+      return;
+    }
 
-setTimeout(() => {
-setShowMessage(false);  // auto hide after 4 sec
-}, 4000);
+    // Prepare email data
+    const templateParams = {
+      from_name: name,
+      from_email: email,
+      message: message,
+      to_name: "Tamil Selvan",
+      reply_to: email
+    };
 
-})
-.catch(() => {
-alert("Message Failed");
-});
+    console.log("Sending email with params:", templateParams);
 
-};
+    emailjs.send(
+      "service_cun6ctp",
+      "template_v3hxkgp",
+      templateParams
+    )
+    .then((response) => {
+      console.log("EmailJS Success:", response);
+      setShowMessage(true);
+      form.current.reset();
 
-return (
+      setTimeout(() => {
+        setShowMessage(false);
+      }, 4000);
+    })
+    .catch((error) => {
+      console.error("EmailJS Error:", error);
+  
+      if (error.text && error.text.includes('Invalid grant')) {
+        alert("Email service needs reconnection. Please contact me directly at tamilselvan24650@gmail.com");
+      } else if (error.text && error.text.includes('template')) {
+        alert("Email template error. Please try again later.");
+      } else {
+        alert("Failed to send message. Please try again later.");
+      }
+    });
+  };
 
-<div className="contact-section">
+  return (
+    <div className="contact-section">
+      <h1>Contact Me</h1>
 
-<h1>Contact Me</h1>
+      <form ref={form} onSubmit={sendEmail}>
+        <input
+          type="text"
+          name="name"
+          placeholder="Your Name"
+          required
+        />
 
-<form ref={form} onSubmit={sendEmail}>
+        <input
+          type="email"
+          name="email"
+          placeholder="Your Email"
+          required
+        />
 
-<input
-type="text"
-name="name"
-placeholder="Your Name"
-required
-/>
+        <textarea
+          name="message"
+          placeholder="Your Message"
+          required
+        />
 
-<input
-type="email"
-name="email"
-placeholder="Your Email"
-required
-/>
+        <button type="submit">
+          Send Message
+        </button>
+      </form>
 
-<textarea
-name="message"
-placeholder="Your Message"
-required
-/>
-
-<input
-type="hidden"
-name="time"
-value={new Date().toLocaleString()}
-/>
-
-<button type="submit">
-Send Message
-</button>
-
-</form>
-
-
-{/* Success Message */}
-
-{showMessage && (
-<div className="success-popup">
-<div className="success-box">
-<h2>✔ Message Sent !!</h2>
-<p>Thank you for contacting me.<br/>I will reach you soon.</p>
-</div>
-</div>
-)}
-
-
-{/* Contact Links */}
-
-
-
-</div>
-
-);
+      {/* Success Message */}
+      {showMessage && (
+        <div className="success-popup">
+          <div className="success-box">
+            <h2>✔ Message Sent!</h2>
+            <p>Thank you for contacting me.<br/>I will reach you soon.</p>
+          </div>
+        </div>
+      )}
+    </div>
+  );
 
 };
 
