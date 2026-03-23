@@ -102,6 +102,8 @@
   color:white;
   background:linear-gradient(90deg,#38bdf8,#6366f1);
   transition:0.3s;
+  position:relative;
+  z-index:10;
 }
 
 .project-buttons a:hover{
