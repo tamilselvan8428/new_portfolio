@@ -2,8 +2,7 @@ import React, { useEffect, useRef } from "react";
 import "../style/Certificates.css";
 
 const Certificates = () => {
-
-const certs = [
+  const certs = [
     "c.png",
     "css.png",
     "java.png",
@@ -12,54 +11,70 @@ const certs = [
     "srm.png",
     "product.png",
     "linkedin.png"
-];
+  ];
 
-const sliderRef = useRef(null);
+  const sliderRef = useRef(null);
 
-useEffect(() => {
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            sliderRef.current.classList.add("start-scroll");
+          }else{
+            sliderRef.current.classList.remove("start-scroll");
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
 
-const observer = new IntersectionObserver(
-(entries) => {
-entries.forEach(entry => {
-if(entry.isIntersecting){
-sliderRef.current.classList.add("start-scroll");
-}else{
-sliderRef.current.classList.remove("start-scroll");
-}
-});
-},
-{ threshold: 0.3 }
-);
+    if(sliderRef.current){
+      observer.observe(sliderRef.current);
+    }
 
-observer.observe(sliderRef.current);
+    return () => {
+      if(sliderRef.current){
+        observer.unobserve(sliderRef.current);
+      }
+    };
+  }, []);
 
-}, []);
+  return (
+    <section className="cert-section">
+      <h2 className="section-title">My Certificates</h2>
+      
+      <p className="cert-subtitle">A collection of my professional certifications and academic achievements</p>
 
-return (
-<div className="cert-section">
+      <div className="track">
+        <div className="line"></div>
 
-<h1>My Certificates</h1>
+        <div className="cert-slider" ref={sliderRef}>
+          
+          <div className="cert-slide-track">
+            {certs.map((cert, index) => (
+              <div className="cert-card" key={index}>
+                <div className="cert-card-inner">
+                  <img src={cert} alt={`Certificate ${index + 1}`}/>
+                </div>
+              </div>
+            ))}
+          </div>
 
-<div className="track">
+          <div className="cert-slide-track" aria-hidden="true">
+            {certs.map((cert, index) => (
+              <div className="cert-card" key={`dup-${index}`}>
+                <div className="cert-card-inner">
+                  <img src={cert} alt={`Certificate ${index + 1}`}/>
+                </div>
+              </div>
+            ))}
+          </div>
 
-<div className="line"></div>
-
-<div className="cert-slider" ref={sliderRef}>
-
-{certs.concat(certs).map((cert, index) => (
-
-<div className="cert-card" key={index}>
-<img src={cert} alt="certificate"/>
-</div>
-
-))}
-
-</div>
-
-</div>
-
-</div>
-);
+        </div>
+      </div>
+    </section>
+  );
 };
 
-export default Certificates;
+export default Certificates;
